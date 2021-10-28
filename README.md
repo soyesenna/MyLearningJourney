@@ -6,3 +6,5 @@
 
 - [파이썬 엑셀 라이브러리 openxlpy 간단 사용법(21.10.18)](https://github.com/soyesenna/TIL/blob/master/21.10.18/README.md)
 
+- [알고리즘 인터뷰 3장 파이썬](https://github.com/soyesenna/TIL/blob/master/21.10.28/README.md)
+
