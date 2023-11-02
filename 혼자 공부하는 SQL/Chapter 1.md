@@ -1,3 +1,12 @@
+---
+tistoryBlogName: soyesenna
+tistoryTitle: (혼자 공부하는 SQL) Chapter 1
+tistoryVisibility: "3"
+tistoryCategory: "1150625"
+tistorySkipModal: true
+tistoryPostId: "3"
+tistoryPostUrl: https://soyesenna.tistory.com/3
+---
 --- 
 ## 1-1 데이터 베이스 알아보기
 - 데이터베이스는 ***데이터의 집합*** 이라고 할 수 있다

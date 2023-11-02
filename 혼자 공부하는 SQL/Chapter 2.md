@@ -1,3 +1,12 @@
+---
+tistoryBlogName: soyesenna
+tistoryTitle: (혼자 공부하는 SQL) Chapter 2
+tistoryVisibility: "3"
+tistoryCategory: "1150625"
+tistorySkipModal: true
+tistoryPostId: "4"
+tistoryPostUrl: https://soyesenna.tistory.com/4
+---
 --- 
 ## 2-1 건물을 짓기 위한 설계도 : 데이터베이스 모델링
 
@@ -21,3 +30,8 @@
 	- 하지만 가장 큰 단점은 폭포에서 내려가기는 쉬워도 다시 거슬러 올라가기는 힘든 것처럼 문제가 발생할 경우 앞 단계로 돌아가기가 어렵다는 것
 
 ### 데이터베이스 모델링
+
+
+
+### 작성중...
+
