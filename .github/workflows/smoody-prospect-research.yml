@@ -1,0 +1,61 @@
+name: Smoody prospect research
+
+on:
+  push:
+    branches:
+      - smoody-prospect-research-20260619
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Check out research branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pandas requests beautifulsoup4 lxml selenium openpyxl xlrd
+          which google-chrome || which google-chrome-stable || which chromium || true
+
+      - name: Research public Cafe24 and Naver SmartStore prospects
+        env:
+          MAX_ENRICH: "1600"
+          ENRICH: "1"
+        run: |
+          set +e
+          python scripts/smoody_prospect_research.py
+          status=$?
+          echo "research_exit_code=$status" >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+
+      - name: Summarize output
+        if: always()
+        run: |
+          find research_output -maxdepth 2 -type f -printf '%p %s bytes\n' | sort || true
+          if [ -f research_output/stats.json ]; then
+            cat research_output/stats.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload research artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoody-prospect-research
+          path: research_output/
+          if-no-files-found: error
+          retention-days: 3
