@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - smoody-fast-research-20260619
+  pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 permissions:
@@ -11,12 +14,14 @@ permissions:
 
 jobs:
   research:
-    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - name: Check out research branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Install dependencies
         run: |
@@ -43,7 +48,7 @@ jobs:
           fi
 
       - name: Commit research output to temporary branch
-        if: always()
+        if: always() && github.event_name == 'push'
         run: |
           if [ -d research_fast_output ]; then
             git config user.name "github-actions[bot]"
