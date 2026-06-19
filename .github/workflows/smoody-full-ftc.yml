@@ -1,0 +1,53 @@
+name: Smoody nationwide FTC extraction
+
+on:
+  push:
+    branches:
+      - smoody-full-ftc-20260619
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Check out extraction branch
+        uses: actions/checkout@v4
+
+      - name: Install dependency
+        run: |
+          python3 --version
+          python3 -m pip install --upgrade pip requests
+
+      - name: Extract all available nationwide leads
+        run: |
+          set +e
+          python3 scripts/smoody_full_ftc_extract.py
+          status=$?
+          echo "extract_exit_code=$status" >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+
+      - name: Summarize output
+        if: always()
+        run: |
+          find smoody_full_output -maxdepth 1 -type f -printf '%p %s bytes\n' | sort || true
+          if [ -f smoody_full_output/stats.json ]; then
+            cat smoody_full_output/stats.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload compact nationwide output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoody-nationwide-ftc-leads
+          path: |
+            smoody_full_output/confirmed_all.csv
+            smoody_full_output/smartstore_generic_candidates.csv
+            smoody_full_output/cafe24_host_candidates.csv
+            smoody_full_output/stats.json
+            smoody_full_output/source_log.csv
+          if-no-files-found: ignore
+          retention-days: 3
