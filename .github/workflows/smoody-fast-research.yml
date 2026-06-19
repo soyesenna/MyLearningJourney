@@ -1,0 +1,63 @@
+name: Smoody fast Cafe24 research
+
+on:
+  push:
+    branches:
+      - smoody-fast-research-20260619
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out research branch
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          python3 --version
+          python3 -m pip install --upgrade pip
+          python3 -m pip install requests beautifulsoup4
+
+      - name: Collect and enrich public Cafe24 prospects
+        env:
+          MAX_ENRICH: "1600"
+        run: |
+          set +e
+          python3 scripts/smoody_cafe24_fast.py
+          status=$?
+          echo "research_exit_code=$status" >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+
+      - name: Summarize output
+        if: always()
+        run: |
+          find research_fast_output -maxdepth 1 -type f -printf '%p %s bytes\n' | sort || true
+          if [ -f research_fast_output/stats.json ]; then
+            cat research_fast_output/stats.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Commit research output to temporary branch
+        if: always()
+        run: |
+          if [ -d research_fast_output ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add research_fast_output/prospects.csv research_fast_output/prospects.json research_fast_output/stats.json 2>/dev/null || true
+            git commit -m "Add fast Cafe24 research output [skip ci]" || echo "No output to commit"
+            git push || true
+          fi
+
+      - name: Upload research artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoody-fast-research
+          path: research_fast_output/
+          if-no-files-found: ignore
+          retention-days: 3
