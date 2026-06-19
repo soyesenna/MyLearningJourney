@@ -22,15 +22,16 @@ jobs:
         with:
           ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
-      - name: Install dependency
+      - name: Install dependencies
         run: |
           python3 --version
-          python3 -m pip install --upgrade pip requests
+          python3 -m pip install --upgrade pip requests selenium
+          which google-chrome || which google-chrome-stable || which chromium || true
 
       - name: Extract all available nationwide leads
         run: |
           set +e
-          python3 scripts/smoody_full_ftc_extract.py
+          python3 scripts/smoody_full_ftc_selenium.py
           status=$?
           echo "extract_exit_code=$status" >> "$GITHUB_STEP_SUMMARY"
           exit 0
@@ -47,7 +48,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: smoody-nationwide-ftc-leads
+          name: smoody-nationwide-ftc-leads-browser
           path: |
             smoody_full_output/confirmed_all.csv
             smoody_full_output/smartstore_generic_candidates.csv
