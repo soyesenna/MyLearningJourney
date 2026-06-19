@@ -1,4 +1,4 @@
-name: Smoody fast Cafe24 research
+name: Smoody source diagnostics
 
 on:
   push:
@@ -13,10 +13,10 @@ permissions:
   contents: write
 
 jobs:
-  research:
+  diagnostics:
     if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 25
     steps:
       - name: Check out research branch
         uses: actions/checkout@v4
@@ -27,42 +27,41 @@ jobs:
         run: |
           python3 --version
           python3 -m pip install --upgrade pip
-          python3 -m pip install requests beautifulsoup4
+          python3 -m pip install requests beautifulsoup4 selenium
+          which google-chrome || which google-chrome-stable || which chromium || true
 
-      - name: Collect and enrich public Cafe24 prospects
-        env:
-          MAX_ENRICH: "1600"
+      - name: Diagnose public data sources
         run: |
           set +e
-          python3 scripts/smoody_cafe24_fast.py
+          python3 scripts/smoody_source_diagnostics.py
           status=$?
-          echo "research_exit_code=$status" >> "$GITHUB_STEP_SUMMARY"
+          echo "diagnostics_exit_code=$status" >> "$GITHUB_STEP_SUMMARY"
           exit 0
 
       - name: Summarize output
         if: always()
         run: |
-          find research_fast_output -maxdepth 1 -type f -printf '%p %s bytes\n' | sort || true
-          if [ -f research_fast_output/stats.json ]; then
-            cat research_fast_output/stats.json >> "$GITHUB_STEP_SUMMARY"
+          find research_diag_output -maxdepth 1 -type f -printf '%p %s bytes\n' | sort || true
+          if [ -f research_diag_output/summary.json ]; then
+            cat research_diag_output/summary.json >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Commit research output to temporary branch
+      - name: Commit diagnostics to temporary branch
         if: always() && github.event_name == 'push'
         run: |
-          if [ -d research_fast_output ]; then
+          if [ -d research_diag_output ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add research_fast_output/prospects.csv research_fast_output/prospects.json research_fast_output/stats.json 2>/dev/null || true
-            git commit -m "Add fast Cafe24 research output [skip ci]" || echo "No output to commit"
+            git add research_diag_output
+            git commit -m "Add public source diagnostics [skip ci]" || echo "No diagnostics to commit"
             git push || true
           fi
 
-      - name: Upload research artifact
+      - name: Upload diagnostics artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: smoody-fast-research
-          path: research_fast_output/
+          name: smoody-source-diagnostics
+          path: research_diag_output/
           if-no-files-found: ignore
           retention-days: 3
