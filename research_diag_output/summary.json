@@ -1,0 +1,120 @@
+{
+  "ftc": {
+    "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='www.ftc.go.kr', port=443): Max retries exceeded with url: /www/selectBizCommOpenList.do?key=255 (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.ftc.go.kr', port=443) at 0x7f89e7828b00>, 'Connection to www.ftc.go.kr timed out. (connect timeout=40)'))\"))"
+  },
+  "data_search": {
+    "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='www.data.go.kr', port=443): Max retries exceeded with url: /tcs/dss/selectDataSetList.do?keyword=%ED%86%B5%EC%8B%A0%ED%8C%90%EB%A7%A4%EC%82%AC%EC%97%85%EC%9E%90 (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.data.go.kr', port=443) at 0x7f89e7828cb0>, 'Connection to www.data.go.kr timed out. (connect timeout=40)'))\"))"
+  },
+  "localdata": {
+    "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='www.localdata.go.kr', port=443): Max retries exceeded with url: /lif/lifeCtacDataView.do?opnSvcId=08_26_04_P (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.localdata.go.kr', port=443) at 0x7f89e7829100>, 'Connection to www.localdata.go.kr timed out. (connect timeout=40)'))\"))"
+  },
+  "localdata_file": {
+    "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='file.localdata.go.kr', port=443): Max retries exceeded with url: /file/ecommerce_businesses/info (Caused by ConnectTimeoutError(<HTTPSConnection(host='file.localdata.go.kr', port=443) at 0x7f89e78295b0>, 'Connection to file.localdata.go.kr timed out. (connect timeout=40)'))\"))"
+  },
+  "builtwith": {
+    "status": 202,
+    "url": "https://trends.builtwith.com/websitelist/Cafe24",
+    "length": 10679,
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+      "Pragma": "no-cache",
+      "Transfer-Encoding": "chunked",
+      "Content-Type": "text/html; charset=utf-8",
+      "Expires": "0",
+      "Vary": "*",
+      "X-Powered-By": "ASP.NET",
+      "Date": "Fri, 19 Jun 2026 18:09:50 GMT"
+    }
+  },
+  "commoncrawl": {
+    "status": 200,
+    "url": "https://index.commoncrawl.org/collinfo.json",
+    "length": 34131,
+    "content_type": "application/json",
+    "headers": {
+      "Server": "nginx/1.31.2",
+      "Date": "Fri, 19 Jun 2026 18:09:51 GMT",
+      "Content-Type": "application/json",
+      "Last-Modified": "Mon, 25 May 2026 16:16:41 GMT",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "ETag": "W/\"6a1475e9-8553\"",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Range",
+      "Access-Control-Expose-Headers": "Content-Range, Content-Length",
+      "Cache-Control": "public, max-age=300",
+      "Content-Encoding": "gzip"
+    }
+  },
+  "naver_search": {
+    "status": 200,
+    "url": "https://search.naver.com/search.naver?query=site%3Asmartstore.naver.com%20%EC%88%98%EC%A0%9C",
+    "length": 660428,
+    "content_type": "text/html; charset=UTF-8",
+    "headers": {
+      "date": "Fri, 19 Jun 2026 18:09:52 GMT",
+      "content-type": "text/html; charset=UTF-8",
+      "transfer-encoding": "chunked",
+      "set-cookie": "page_uid=jBTa8sqosNrirTv685w-402446; Path=/; Domain=.naver.com, _naver_usersession_=PrRZUjXjdiaOgHLj39v9nrLB; Path=/; Domain=.naver.com; max-age=300",
+      "x-frame-options": "DENY",
+      "x-xss-protection": "1; report=/p/er/post/xss",
+      "cache-control": "no-cache, no-store, must-revalidate, max-age=0",
+      "pragma": "no-cache",
+      "content-security-policy": "frame-ancestors 'none'; report-uri /p/er/post/csp",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "vary": "Accept-Encoding",
+      "content-encoding": "gzip",
+      "accept-ch": "Sec-CH-UA, Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Form-Factors, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version, Sec-CH-UA-WoW64",
+      "server": "nfront",
+      "alt-svc": "h3=\":443\"; ma=3600"
+    }
+  },
+  "bing_search": {
+    "status": 200,
+    "url": "https://www.bing.com/search?q=site%3Asmartstore.naver.com%20%EC%88%98%EC%A0%9C",
+    "length": 73952,
+    "content_type": "text/html; charset=utf-8",
+    "headers": {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "private, max-age=0",
+      "Content-Encoding": "gzip",
+      "Expires": "Fri, 19 Jun 2026 18:08:53 GMT",
+      "Vary": "User-Agent, Accept-Encoding",
+      "X-EventID": "6a3585f162bc414ba675c83d8febb355",
+      "UserAgentReductionOptOut": "A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "Permissions-Policy": "unload=()",
+      "Link": "<https://r.bing.com>; rel=\"preconnect\",<https://r.bing.com>; rel=\"preconnect\"; crossorigin,<https://th.bing.com>; rel=\"preconnect\",<https://th.bing.com>; rel=\"preconnect\"; crossorigin",
+      "Content-Security-Policy": "script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-7bPzwJtAl5FKUGIwOTAPIlGtJsiRqgMXfc1fBGVhaEI='; base-uri 'self';report-to csp-endpoint",
+      "Report-To": "{\"group\":\"csp-endpoint\",\"max_age\":86400,\"endpoints\":[{\"url\":\"https://aefd.nelreports.net/api/report?cat=bingcsp\"}]}, {\"group\":\"network-errors\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://aefd.nelreports.net/api/report?cat=bingserp&ndcParam=QWthbWFp\"}]}, {\"group\":\"crossorigin-errors\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://aefd.nelreports.net/api/report?cat=bingserp\"}]}",
+      "P3P": "CP=\"NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND\"",
+      "X-Display-Context": "full",
+      "NEL": "{\"report_to\":\"network-errors\",\"max_age\":604800,\"success_fraction\":0.01,\"failure_fraction\":1.0,\"include_subdomains\":true}",
+      "Cross-Origin-Embedder-Policy-Report-Only": "'require-corp; report-to=\\\"crossorigin-errors\\\"'",
+      "Cross-Origin-Opener-Policy-Report-Only": "'same-origin; report-to=\\\"crossorigin-errors\\\"'",
+      "Date": "Fri, 19 Jun 2026 18:09:53 GMT",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive, Transfer-Encoding",
+      "Set-Cookie": "MUID=3379208E8DDC6ACD19BA37F38CC36B51; domain=.bing.com; expires=Wed, 14-Jul-2027 18:09:53 GMT; path=/; secure; SameSite=None, MUIDB=3379208E8DDC6ACD19BA37F38CC36B51; expires=Wed, 14-Jul-2027 18:09:53 GMT; path=/; HttpOnly, _EDGE_S=F=1&SID=2A188184D4B369E3365496F9D5AC68D4; domain=.bing.com; path=/; HttpOnly, _EDGE_V=1; domain=.bing.com; expires=Wed, 14-Jul-2027 18:09:53 GMT; path=/; HttpOnly, __Host-XY=CfDJ8A8rLfEh4ZdMhJ19YNJ4FtRuVVC91x11txwwQuuJV_ekNcI38li26U6M8wUKsezSHGUybp0Q1SZeyhEnqkFTrGdjhMrcnjM4GE7FhbntRQ6G7EPfUBwFR3ka4VKxsus2Dem1MfO9zQ0a2bUZI4uI8crjcMY_CwYf6X4IiWfz8DDcNNoSF7ea0wGvF4ioZbvMMU3sUGcYRENkdORlbn4IzUzmDYmvd1xt6rRcBhtGMcwiK8ESc_X6Kqn9SPEcr02sMw; expires=Sun, 21-Jun-2026 01:09:53 GMT; path=/; secure; HttpOnly; SameSite=Lax, SRCHHPGUSR=V=CfDJ8A8rLfEh4ZdMhJ19YNJ4FtTMmTtQ-ZljC65ft87Wm3aWfn6Gb7a7_0b1q1R2aTE59E4N1_z-9h982eQ3RgGn35xU-_lvVP52ulQU_goBiVnaGzUn8OcFIM28xb9rPyhjCJz_5HFRaBaHTo5v0ONBeCk&SRCHLANG=ko&IG=B7D8212D41614F229B93DD2D28250428; domain=.bing.com; expires=Mon, 19-Jun-2028 18:09:53 GMT; path=/, SRCHD=AF=NOFORM; domain=.bing.com; expires=Mon, 19-Jun-2028 18:09:53 GMT; path=/, SRCHUID=V=2&GUID=3BAA7A5702E64EF8A9F845F252C09859&dmnchg=1; domain=.bing.com; expires=Mon, 19-Jun-2028 18:09:53 GMT; path=/, SRCHUSR=DOB=20260619; domain=.bing.com; expires=Mon, 19-Jun-2028 18:09:53 GMT; path=/, _SS=SID=2A188184D4B369E3365496F9D5AC68D4; domain=.bing.com; path=/",
+      "Alt-Svc": "h3=\":443\"; ma=93600",
+      "X-CDN-TraceID": "0.95721102.1781892593.962b264b"
+    }
+  },
+  "commoncrawl_latest": "CC-MAIN-2026-21",
+  "cc_cafe24": {
+    "status": 200,
+    "url": "https://index.commoncrawl.org/CC-MAIN-2026-21-index?url=*.cafe24.com&output=json&filter=status:200&collapse=urlkey&pageSize=100",
+    "length": 28233428,
+    "content_type": "text/x-ndjson"
+  },
+  "cc_smartstore": {
+    "status": 200,
+    "url": "https://index.commoncrawl.org/CC-MAIN-2026-21-index?url=smartstore.naver.com%2F*&output=json&filter=status:200&collapse=urlkey&pageSize=100",
+    "length": 33570,
+    "content_type": "text/x-ndjson"
+  },
+  "selenium": {
+    "error": "ReadTimeoutError(\"HTTPConnectionPool(host='localhost', port=41783): Read timed out. (read timeout=120)\")"
+  }
+}
