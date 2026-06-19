@@ -1,0 +1,69 @@
+name: Smoody FTC prospect extract
+
+on:
+  push:
+    branches:
+      - smoody-ftc-extract-20260619
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip ci]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out extraction branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
+
+      - name: Install dependencies
+        run: |
+          python3 --version
+          python3 -m pip install --upgrade pip
+          python3 -m pip install requests
+
+      - name: Download and extract public FTC prospects
+        env:
+          TARGET_SMART: "1800"
+          TARGET_CAFE: "350"
+        run: |
+          set +e
+          python3 scripts/smoody_ftc_extract.py
+          status=$?
+          echo "extract_exit_code=$status" >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+
+      - name: Summarize output
+        if: always()
+        run: |
+          find ftc_prospect_output -maxdepth 1 -type f -printf '%p %s bytes\n' | sort || true
+          if [ -f ftc_prospect_output/stats.json ]; then
+            cat ftc_prospect_output/stats.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Commit compact output to temporary branch
+        if: always() && github.event_name == 'push'
+        run: |
+          if [ -d ftc_prospect_output ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add ftc_prospect_output/prospects.csv ftc_prospect_output/prospects.json ftc_prospect_output/stats.json 2>/dev/null || true
+            git commit -m "Add FTC prospect extraction output [skip ci]" || echo "No output to commit"
+            git push || true
+          fi
+
+      - name: Upload extraction artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoody-ftc-prospects
+          path: ftc_prospect_output/
+          if-no-files-found: ignore
+          retention-days: 3
