@@ -1,0 +1,79 @@
+{
+  "total": 0,
+  "smartstore": 0,
+  "cafe24": 0,
+  "with_email": 0,
+  "smartstore_with_email": 0,
+  "cafe24_with_email": 0,
+  "regional_summaries": [
+    {
+      "city": "서울특별시",
+      "error": "download failed"
+    },
+    {
+      "city": "경기도",
+      "error": "download failed"
+    },
+    {
+      "city": "부산광역시",
+      "error": "download failed"
+    },
+    {
+      "city": "인천광역시",
+      "error": "download failed"
+    },
+    {
+      "city": "대구광역시",
+      "error": "download failed"
+    },
+    {
+      "city": "대전광역시",
+      "error": "download failed"
+    },
+    {
+      "city": "광주광역시",
+      "error": "download failed"
+    },
+    {
+      "city": "울산광역시",
+      "error": "download failed"
+    },
+    {
+      "city": "충청북도",
+      "error": "download failed"
+    },
+    {
+      "city": "충청남도",
+      "error": "download failed"
+    },
+    {
+      "city": "경상북도",
+      "error": "download failed"
+    },
+    {
+      "city": "경상남도",
+      "error": "download failed"
+    },
+    {
+      "city": "전라남도",
+      "error": "download failed"
+    },
+    {
+      "city": "전북특별자치도",
+      "error": "download failed"
+    },
+    {
+      "city": "강원특별자치도",
+      "error": "download failed"
+    },
+    {
+      "city": "제주특별자치도",
+      "error": "download failed"
+    },
+    {
+      "city": "세종특별자치시",
+      "error": "download failed"
+    }
+  ],
+  "generated_at_utc": "2026-06-19T18:34:14Z"
+}
